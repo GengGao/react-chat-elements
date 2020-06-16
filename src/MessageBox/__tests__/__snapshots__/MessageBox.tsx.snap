@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBox component should render without issues 1`] = `
+<div
+  className="rce-container-mbox"
+>
+  <div
+    className="rce-mbox rce-mbox--clear-padding rce-mbox--clear-notch"
+  >
+    <div
+      className="rce-mbox-body"
+    >
+      <Component />
+      <Component />
+      <Component />
+      <Component />
+      <div
+        className="rce-mbox-time rce-mbox-time-block non-copiable"
+        data-text="just now"
+      >
+        <span
+          className="rce-mbox-status"
+        >
+          <IoMdDoneAll
+            color="#4FC3F7"
+          />
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;
