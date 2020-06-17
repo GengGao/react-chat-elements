@@ -1,0 +1,27 @@
+import React, { SyntheticEvent } from 'react';
+import { MessageBoxProps } from '../MessageBox/MessageBox';
+import './MessageList.css';
+declare type CallbackEvent = SyntheticEvent;
+declare type CallbackFn<T = CallbackEvent> = (props: MessageBoxProps, index: number, e: T) => void;
+export declare type MessageListProps = {
+    className?: string;
+    dataSource: MessageBoxProps[];
+    lockable?: boolean;
+    toBottomHeight?: number | '100%';
+    downButton?: boolean;
+    downButtonBadge?: number;
+    onScroll?: React.EventHandler<React.UIEvent<HTMLDivElement>>;
+    onDownButtonClick?: React.EventHandler<React.SyntheticEvent<HTMLDivElement>>;
+    onOpen?: CallbackFn;
+    onPhotoError?: CallbackFn;
+    onDownload?: CallbackFn;
+    onTitleClick?: CallbackFn;
+    onMessageFocused?: CallbackFn<MessageBoxProps>;
+    onForwardClick?: CallbackFn;
+    onReplyClick?: CallbackFn;
+    onReplyMessageClick?: CallbackFn;
+    onClick?: CallbackFn;
+    onContextMenu?: CallbackFn;
+};
+export declare const MessageList: React.FC<MessageListProps>;
+export default MessageList;
