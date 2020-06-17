@@ -4,6 +4,7 @@
   "description": "Reactjs chat components",
   "author": "Avare Kodcu <abdurrahmaneker58@gmail.com>",
   "main": "dist/main.js",
+  "types": "dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/detaysoft/react-chat-elements.git"
@@ -31,12 +32,13 @@
   "homepage": "https://github.com/detaysoft/react-chat-elements#readme",
   "scripts": {
     "webpack-dev-server": "webpack-dev-server",
+    "emit-declarations": "tsc --declaration --emitDeclarationOnly",
     "dev": "webpack-dev-server --mode=development --config webpack.dev.js",
     "prod": "webpack --mode=production",
-    "build": "webpack --progress --profile --colors --config webpack.prod.js && tsc",
+    "build": "webpack --progress --profile --colors --config webpack.prod.js && yarn emit-declarations",
     "test": "react-scripts test --env=jsdom",
     "test:coverage": "npm run test -- --coverage --collectCoverageFrom=src/**/*.js --collectCoverageFrom=!src/index.js",
-    "type-check": "tsc",
+    "type-check": "tsc --noEmit",
     "prettier": "prettier src/**/*.{ts,tsx} --list-different",
     "prettier-fix": "prettier 'src/**/*.{ts,tsx}' --write",
     "lint": "eslint --max-warnings=0 src --ext .ts,.tsx",
