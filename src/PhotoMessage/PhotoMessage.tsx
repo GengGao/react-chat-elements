@@ -1,27 +1,11 @@
+import { CircularProgress } from '@material-ui/core';
 import React from 'react';
 import {
   FaCloudDownloadAlt as FaCloudDownload,
   FaExclamationTriangle as FaError,
 } from 'react-icons/fa';
-//@ts-expect-error
-import { Circle } from 'react-progress-bar.js';
-import './PhotoMessage.css';
 import { Data } from '../types';
-
-const progressOptions = {
-  strokeWidth: 2.3,
-  color: '#efe',
-  trailColor: '#aaa',
-  trailWidth: 1,
-  step: (state: any, circle: any) => {
-    circle.path.setAttribute('trail', state.color);
-    circle.path.setAttribute('trailwidth-width', state.width);
-
-    var value = Math.round(circle.value() * 100);
-    if (value === 0) circle.setText('');
-    else circle.setText(value);
-  },
-};
+import './PhotoMessage.css';
 
 export type PhotoMessageProps = {
   data: Data;
@@ -81,11 +65,10 @@ export const PhotoMessage: React.FC<PhotoMessageProps> = ({
             )}
             {typeof data.status.loading === 'number' &&
               data.status.loading !== 0 && (
-                <Circle
-                  progress={data.status.loading}
-                  options={progressOptions}
-                  initialAnimate={true}
-                  containerClassName={'rce-mbox-photo--img__block-item'}
+                <CircularProgress
+                  value={data.status.loading}
+                  variant="determinate"
+                  className={'rce-mbox-photo--img__block-item'}
                 />
               )}
           </div>
@@ -95,5 +78,3 @@ export const PhotoMessage: React.FC<PhotoMessageProps> = ({
     </div>
   );
 };
-
-export default PhotoMessage;

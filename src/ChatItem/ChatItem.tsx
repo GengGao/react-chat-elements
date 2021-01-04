@@ -1,10 +1,12 @@
 import classNames from 'classnames';
 import React from 'react';
-import { format } from 'timeago.js';
 import { Avatar, AvatarProps } from '../Avatar/Avatar';
 import './ChatItem.css';
+import { getDateString } from '../utils';
 
 export type ChatItemProps = {
+  id: string;
+  isActive?: boolean;
   className?: string;
   letterItem?: AvatarProps['letterItem'];
   avatar?: AvatarProps['src'];
@@ -12,8 +14,7 @@ export type ChatItemProps = {
   alt?: AvatarProps['alt'];
   title?: string;
   subtitle?: string;
-  date?: Date | number;
-  dateString?: string;
+  date: Date | undefined;
   unread?: number;
   onClick?: React.EventHandler<React.SyntheticEvent<HTMLDivElement>>;
   onContextMenu?: React.EventHandler<React.MouseEvent<HTMLDivElement>>;
@@ -30,13 +31,13 @@ export const ChatItem: React.FC<ChatItemProps> = ({
   avatar,
   alt,
   letterItem,
+  isActive,
   onClick,
   onContextMenu,
   onAvatarError,
   avatarFlexible,
   lazyLoadingImage,
   date = new Date(),
-  dateString,
   title,
   subtitle,
   unread,
@@ -50,7 +51,11 @@ export const ChatItem: React.FC<ChatItemProps> = ({
       onClick={onClick}
       onContextMenu={onContextMenu}
     >
-      <div className="rce-citem">
+      <div
+        className={classNames('rce-citem', {
+          'rce-citem-active': isActive,
+        })}
+      >
         <div
           className={classNames('rce-citem-avatar', {
             'rce-citem-status-encircle': statusColorType === 'encircle',
@@ -94,9 +99,7 @@ export const ChatItem: React.FC<ChatItemProps> = ({
           <div className="rce-citem-body--top">
             <div className="rce-citem-body--top-title">{title}</div>
             <div className="rce-citem-body--top-time">
-              {date &&
-                (date instanceof Date || !isNaN(date)) &&
-                (dateString || format(date))}
+              {getDateString(date)}
             </div>
           </div>
 
@@ -111,5 +114,3 @@ export const ChatItem: React.FC<ChatItemProps> = ({
     </div>
   );
 };
-
-export default ChatItem;

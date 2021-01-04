@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots SpotifyMessage Default 1`] = `
+<div
+  className="rce-mbox-spotify"
+>
+  <iframe
+    allowTransparency={true}
+    frameBorder="0"
+    height={380}
+    src="https://open.spotify.com/embed?uri=spotify%3Auser%3Aspotify%3Aplaylist%3A4QcN33fvv6hQBqebdRIM1g&theme=black&view=list"
+    width={300}
+  />
+</div>
+`;

@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Dropdown Default 1`] = `
+<div
+  className="rce-dropdown-container"
+  onBlur={[Function]}
+>
+  <button
+    className="rce-button"
+    onClick={[Function]}
+    style={
+      Object {
+        "backgroundColor": "#3979aa",
+        "borderColor": "#3979aa",
+        "color": "white",
+      }
+    }
+  >
+    <span>
+      Click me
+    </span>
+  </button>
+  <div
+    className="rce-dropdown default rce-dropdown-open__northwest dropdown-hide"
+  >
+    <ul>
+      <span
+        className="rce-dropdown-title"
+      >
+        Title
+      </span>
+      <li
+        onMouseDown={[Function]}
+      >
+        <span
+          className="rce-button-icon--container"
+        >
+          <a>
+            Add
+          </a>
+          <span
+            className="rce-button-icon"
+            style={
+              Object {
+                "color": undefined,
+                "float": undefined,
+                "fontSize": 12,
+              }
+            }
+          >
+            <svg
+              aria-hidden={true}
+              className="MuiSvgIcon-root"
+              focusable="false"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+              />
+            </svg>
+          </span>
+        </span>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

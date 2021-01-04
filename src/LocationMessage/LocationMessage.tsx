@@ -74,5 +74,3 @@ export const LocationMessage: React.FC<LocationMessageProps> = ({
     </div>
   );
 };
-
-export default LocationMessage;

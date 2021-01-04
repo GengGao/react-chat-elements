@@ -17,5 +17,3 @@ export const SystemMessage: React.FC<SystemMessageProps> = ({
     </div>
   </div>
 );
-
-export default SystemMessage;

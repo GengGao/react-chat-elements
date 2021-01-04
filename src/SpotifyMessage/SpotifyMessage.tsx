@@ -17,7 +17,7 @@ export const SpotifyMessage: React.FC<SpotifyMessageProps> = ({
   height = 380,
 }) => {
   const toUrl = () => {
-    var data = { uri, theme, view };
+    const data = { uri, theme, view };
     return Object.entries(data)
       .map(
         ([key, value]) =>
@@ -41,5 +41,3 @@ export const SpotifyMessage: React.FC<SpotifyMessageProps> = ({
     </div>
   );
 };
-
-export default SpotifyMessage;

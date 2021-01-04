@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Popup Default 1`] = `
+<div
+  className="rce-popup-wrapper"
+>
+  <div
+    className="rce-popup"
+  >
+    <div
+      className="rce-popup-header"
+    >
+      <span>
+        Header
+      </span>
+    </div>
+    <div
+      className="rce-popup-content"
+      style={
+        Object {
+          "color": "#333",
+        }
+      }
+    >
+      Text
+    </div>
+    <div
+      className="rce-popup-footer"
+    />
+  </div>
+</div>
+`;

@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots ReplyMessage Default 1`] = `
+<div
+  className="rce-mbox-reply"
+>
+  <div
+    className="rce-mbox-reply-left"
+  >
+    <div
+      className="rce-mbox-reply-owner"
+    >
+      Title
+    </div>
+    <div
+      className="rce-mbox-reply-message"
+    >
+      Message Text
+    </div>
+  </div>
+  <div
+    className="rce-mbox-reply-right"
+  >
+    <img
+      alt=""
+      src="https://picsum.photos/200"
+    />
+  </div>
+</div>
+`;

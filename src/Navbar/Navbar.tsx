@@ -24,5 +24,3 @@ export const Navbar: React.FC<NavbarProps> = ({
     <div className="rce-navbar-item rce-navbar-item__right">{right}</div>
   </div>
 );
-
-export default Navbar;

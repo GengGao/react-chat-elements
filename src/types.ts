@@ -1,13 +1,14 @@
 export type DataStatus = {
   download?: boolean;
   error?: boolean;
+  /** Loading percentage 0 - 100 */
   loading?: number;
   click?: boolean;
 };
 
 export type Data = {
   status?: DataStatus;
-  size?: number;
+  size?: string;
   width?: number;
   height?: number;
   uri?: string;

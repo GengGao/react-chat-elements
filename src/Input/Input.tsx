@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { createRef, Component } from 'react';
 import './Input.css';
 
 export type InputProps = Pick<
@@ -26,7 +26,7 @@ export type InputProps = Pick<
   autoHeight?: boolean;
   minHeight?: number;
   maxHeight?: number;
-  inputStyle?: Object;
+  inputStyle?: Record<string, any>;
   leftButtons?: React.ReactNode;
   rightButtons?: React.ReactNode;
   inputRef?: (instance: HTMLInputElement | HTMLTextAreaElement | null) => void;
@@ -39,11 +39,11 @@ type InputState = {
   value: string;
 };
 
-export class Input extends React.Component<InputProps, InputState> {
+export class Input extends Component<InputProps, InputState> {
   state = {
     value: this.props.defaultValue ?? '',
   };
-  input = React.createRef<HTMLInputElement | HTMLTextAreaElement>();
+  input = createRef<HTMLInputElement | HTMLTextAreaElement>();
 
   clear = () => {
     this.setState({ value: '' });
@@ -69,15 +69,13 @@ export class Input extends React.Component<InputProps, InputState> {
 
     onChange?.(e);
 
-    if (multiline === true) {
-      if (autoHeight === true) {
-        e.target.style.height = minHeight + 'px';
+    if (multiline && autoHeight) {
+      e.target.style.height = minHeight + 'px';
 
-        if (!maxHeight || e.target.scrollHeight <= maxHeight) {
-          e.target.style.height = e.target.scrollHeight + 'px';
-        } else {
-          e.target.style.height = maxHeight + 'px';
-        }
+      if (!maxHeight || e.target.scrollHeight <= maxHeight) {
+        e.target.style.height = e.target.scrollHeight + 'px';
+      } else {
+        e.target.style.height = maxHeight + 'px';
       }
     }
   };
@@ -115,14 +113,13 @@ export class Input extends React.Component<InputProps, InputState> {
     return (
       <div className={classNames('rce-container-input', className)}>
         {leftButtons && <div className="rce-input-buttons">{leftButtons}</div>}
-        {multiline === false ? (
-          <input
+        {multiline ? (
+          <textarea
             ref={ref => {
               inputRef?.(ref);
               (this.input as any).current = ref;
             }}
-            type={type}
-            className={classNames('rce-input')}
+            className={classNames('rce-input', 'rce-input-textarea')}
             placeholder={placeholder}
             value={value}
             style={inputStyle}
@@ -140,12 +137,13 @@ export class Input extends React.Component<InputProps, InputState> {
             onKeyUp={onKeyUp}
           />
         ) : (
-          <textarea
+          <input
             ref={ref => {
               inputRef?.(ref);
               (this.input as any).current = ref;
             }}
-            className={classNames('rce-input', 'rce-input-textarea')}
+            type={type}
+            className={classNames('rce-input')}
             placeholder={placeholder}
             value={value}
             style={inputStyle}
@@ -170,5 +168,3 @@ export class Input extends React.Component<InputProps, InputState> {
     );
   }
 }
-
-export default Input;

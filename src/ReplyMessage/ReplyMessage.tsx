@@ -40,5 +40,3 @@ export const ReplyMessage: React.FC<ReplyMessageProps> = ({
     )}
   </div>
 );
-
-export default ReplyMessage;

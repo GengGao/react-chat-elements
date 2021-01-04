@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots PhotoMessage Default 1`] = `
+<div
+  className="rce-mbox-photo"
+>
+  <div
+    className="rce-mbox-photo--img"
+  >
+    <img
+      src="https://picsum.photos/200"
+    />
+  </div>
+  <div
+    className="rce-mbox-text"
+  >
+    Photo Message
+  </div>
+</div>
+`;

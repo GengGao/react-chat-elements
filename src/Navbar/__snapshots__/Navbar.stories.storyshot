@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Navbar Default 1`] = `
+<div
+  className="rce-navbar light"
+>
+  <div
+    className="rce-navbar-item rce-navbar-item__left"
+  >
+    Left
+  </div>
+  <div
+    className="rce-navbar-item rce-navbar-item__center"
+  >
+    Center
+  </div>
+  <div
+    className="rce-navbar-item rce-navbar-item__right"
+  >
+    Right
+  </div>
+</div>
+`;

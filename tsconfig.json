@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "importHelpers": true,
     "allowSyntheticDefaultImports": true,
     "jsx": "react",
     "lib": ["dom", "esnext"],
@@ -15,13 +16,20 @@
     "alwaysStrict": true,
     "baseUrl": "./",
     "target": "es5",
-    "allowJs": true,
+    "paths": {
+      "*": ["../types/*"]
+    },
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "module": "CommonJS",
     "resolveJsonModule": true,
     "isolatedModules": true
   },
-  "exclude": ["node_modules", "src/setupTests.js", "**/__tests__/*"],
-  "include": ["src", "setupTests.jss"]
+  "exclude": [
+    "node_modules",
+    "babel.config.js",
+    "**/__tests__/*",
+    "**/*.stories.tsx"
+  ],
+  "include": ["src"]
 }

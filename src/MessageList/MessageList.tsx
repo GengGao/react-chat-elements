@@ -33,44 +33,29 @@ export type MessageListProps = {
   onContextMenu?: CallbackFn;
 };
 
-export const MessageList: React.FC<MessageListProps> = props => {
+export const MessageList: React.FC<MessageListProps> = ({
+  dataSource,
+  className,
+  toBottomHeight = 300,
+  lockable,
+  downButton,
+  downButtonBadge,
+  onScroll,
+  onDownButtonClick,
+  onOpen,
+  onPhotoError,
+  onDownload,
+  onTitleClick,
+  onMessageFocused,
+  onForwardClick,
+  onReplyClick,
+  onReplyMessageClick,
+  onClick,
+  onContextMenu,
+}) => {
   const [scrollBottom, setScrollBottom] = useState(0);
-  const [downButton, setDownButton] = useState(false);
+  const [downButtonActive, setDownButtonActive] = useState(false);
   const messageListRef = useRef<HTMLDivElement>(null);
-
-  const {
-    dataSource,
-    className,
-    toBottomHeight = 300,
-    lockable,
-    downButtonBadge,
-    onScroll,
-    onDownButtonClick,
-    onOpen,
-    onPhotoError,
-    onDownload,
-    onTitleClick,
-    onMessageFocused,
-    onForwardClick,
-    onReplyClick,
-    onReplyMessageClick,
-    onClick,
-    onContextMenu,
-  } = props;
-
-  const checkScroll = () => {
-    const e = messageListRef.current;
-    if (!e) return;
-
-    if (toBottomHeight === '100%' || scrollBottom < toBottomHeight) {
-      // scroll to bottom
-      e.scrollTop = e.scrollHeight;
-    } else {
-      if (lockable === true) {
-        e.scrollTop = e.scrollHeight - e.offsetHeight - scrollBottom;
-      }
-    }
-  };
 
   const dataSourceLength = dataSource.length;
 
@@ -83,19 +68,37 @@ export const MessageList: React.FC<MessageListProps> = props => {
       return;
     }
     setScrollBottom(getBottom(messageListRef.current));
-    checkScroll();
+
+    const checkScroll = () => {
+      const e = messageListRef.current;
+      if (!e) {
+        return;
+      }
+
+      if (toBottomHeight === '100%' || scrollBottom < toBottomHeight) {
+        // scroll to bottom
+        e.scrollTop = e.scrollHeight;
+      } else {
+        if (lockable) {
+          e.scrollTop = e.scrollHeight - e.offsetHeight - scrollBottom;
+        }
+      }
+    };
+
+    setTimeout(() => checkScroll(), 10);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dataSourceLength]);
 
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
-    var bottom = getBottom(messageListRef.current!);
+    const bottom = getBottom(messageListRef.current!);
     if (toBottomHeight === '100%' || bottom > toBottomHeight) {
       if (downButton) {
-        setDownButton(true);
+        setDownButtonActive(true);
         setScrollBottom(bottom);
       }
     } else {
       if (downButton) {
-        setDownButton(false);
+        setDownButtonActive(false);
         setScrollBottom(bottom);
       }
     }
@@ -107,31 +110,58 @@ export const MessageList: React.FC<MessageListProps> = props => {
     if (!messageListRef.current) {
       return;
     }
+    messageListRef.current.scrollTo({
+      top: messageListRef.current.scrollHeight,
+      behavior: 'smooth',
+    });
     onDownButtonClick?.(e);
   };
 
   return (
     <div className={classNames(['rce-container-mlist', className])}>
       <div ref={messageListRef} onScroll={handleScroll} className="rce-mlist">
-        {dataSource.map((x, i) => (
-          <MessageBox
-            key={i}
-            {...x}
-            onOpen={(e: CallbackEvent) => onOpen?.(x, i, e)}
-            //@ts-expect-error
-            onPhotoError={e => onPhotoError?.(x, i, e)}
-            onDownload={(e: CallbackEvent) => onDownload?.(x, i, e)}
-            onTitleClick={e => onTitleClick?.(x, i, e)}
-            onForwardClick={e => onForwardClick?.(x, i, e)}
-            onReplyClick={e => onReplyClick?.(x, i, e)}
-            onReplyMessageClick={e => onReplyMessageClick?.(x, i, e)}
-            onClick={e => onClick?.(x, i, e)}
-            onContextMenu={e => onContextMenu?.(x, i, e)}
-            onMessageFocused={e => onMessageFocused?.(x, i, e)}
-          />
-        ))}
+        {dataSource.map((x, i) => {
+          return (
+            <MessageBox
+              key={x.id ?? i}
+              {...x}
+              onOpen={(e: CallbackEvent) => onOpen?.(x, i, e)}
+              //@ts-expect-error weird types
+              onPhotoError={e => onPhotoError?.(x, i, e)}
+              onDownload={(e: CallbackEvent) => onDownload?.(x, i, e)}
+              onTitleClick={e => {
+                x.onTitleClick?.(e);
+                onTitleClick?.(x, i, e);
+              }}
+              onForwardClick={e => {
+                x.onForwardClick?.(e);
+                onForwardClick?.(x, i, e);
+              }}
+              onReplyClick={e => {
+                x.onReplyClick?.(e);
+                onReplyClick?.(x, i, e);
+              }}
+              onReplyMessageClick={e => {
+                x.onReplyMessageClick?.(e);
+                onReplyMessageClick?.(x, i, e);
+              }}
+              onClick={e => {
+                x.onClick?.(e);
+                onClick?.(x, i, e);
+              }}
+              onContextMenu={e => {
+                x.onContextMenu?.(e);
+                onContextMenu?.(x, i, e);
+              }}
+              onMessageFocused={e => {
+                x.onMessageFocused?.(e);
+                onMessageFocused?.(x, i, e);
+              }}
+            />
+          );
+        })}
       </div>
-      {props.downButton === true && downButton && toBottomHeight !== '100%' && (
+      {downButton && downButtonActive && toBottomHeight !== '100%' && (
         <div className="rce-mlist-down-button" onClick={toBottom}>
           <FaChevronDown />
           {downButtonBadge && (
@@ -144,5 +174,3 @@ export const MessageList: React.FC<MessageListProps> = props => {
     </div>
   );
 };
-
-export default MessageList;

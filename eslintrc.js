@@ -1,7 +1,7 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2019, // Allows for the parsing of modern ECMAScript features
+    ecmaVersion: 2020, // Allows for the parsing of modern ECMAScript features
     sourceType: 'module', // Allows for the use of imports
     ecmaFeatures: {
       jsx: true,
@@ -37,10 +37,19 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 0, // covered by eslint
     '@typescript-eslint/no-non-null-assertion': 0,
     '@typescript-eslint/no-empty-function': 0,
-    '@typescript-eslint/camelcase': 0,
-    '@typescript-eslint/ban-ts-ignore': 0,
     '@typescript-eslint/explicit-function-return-type': 0,
+    '@typescript-eslint/explicit-module-boundary-types': 0,
     'import/order': 0,
+    '@typescript-eslint/ban-ts-comment': [
+      'error',
+      {
+        'ts-expect-error': false,
+        'ts-ignore': true,
+        'ts-nocheck': true,
+        'ts-check': false,
+        minimumDescriptionLength: 3,
+      },
+    ],
     'graphql/template-strings': [
       'error',
       {

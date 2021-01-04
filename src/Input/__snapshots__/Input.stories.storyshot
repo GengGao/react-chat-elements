@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Input Default 1`] = `
+<div
+  className="rce-container-input"
+>
+  <textarea
+    className="rce-input rce-input-textarea"
+    onChange={[Function]}
+    placeholder="Placeholder"
+    value=""
+  />
+</div>
+`;

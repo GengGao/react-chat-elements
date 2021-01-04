@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots Avatar Circle Image 1`] = `
+<div
+  className="rce-avatar-container circle xlarge"
+>
+  <img
+    className="rce-avatar"
+    src="https://picsum.photos/200"
+  />
+</div>
+`;
+
+exports[`Storyshots Avatar Circle Letter Item 1`] = `
+<div
+  className="rce-avatar-container circle xlarge"
+>
+  <div
+    className="rce-avatar-letter-background"
+    style={
+      Object {
+        "backgroundColor": "#533a32",
+      }
+    }
+  >
+    <span
+      className="rce-avatar-letter"
+    >
+      AB
+    </span>
+  </div>
+</div>
+`;

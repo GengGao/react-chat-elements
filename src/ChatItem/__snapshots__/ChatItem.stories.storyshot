@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots ChatItem Default 1`] = `
+<div
+  className="rce-container-citem"
+>
+  <div
+    className="rce-citem"
+  >
+    <div
+      className="rce-citem-avatar"
+    >
+      <div
+        className="rce-avatar-container circle large"
+      >
+        <img
+          className="rce-avatar"
+          src="https://picsum.photos/200"
+        />
+        <span
+          className="rce-citem-status"
+          style={
+            Object {
+              "backgroundColor": "green",
+            }
+          }
+        />
+      </div>
+    </div>
+    <div
+      className="rce-citem-body"
+    >
+      <div
+        className="rce-citem-body--top"
+      >
+        <div
+          className="rce-citem-body--top-title"
+        >
+          title
+        </div>
+        <div
+          className="rce-citem-body--top-time"
+        >
+          15 years ago
+        </div>
+      </div>
+      <div
+        className="rce-citem-body--bottom"
+      >
+        <div
+          className="rce-citem-body--bottom-title"
+        >
+          subtitle
+        </div>
+        <div
+          className="rce-citem-body--bottom-status"
+        >
+          <span>
+            2
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

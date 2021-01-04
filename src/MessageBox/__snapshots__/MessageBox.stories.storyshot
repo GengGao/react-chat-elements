@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots MessageBox Default 1`] = `
+<div
+  className="rce-container-mbox"
+>
+  <div
+    className="rce-mbox"
+  >
+    <div
+      className="rce-mbox-body"
+    >
+      <div
+        className="rce-mbox-forward rce-mbox-forward-right"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"
+          />
+        </svg>
+      </div>
+      <div
+        className="rce-mbox-title rce-mbox-title--clear"
+      >
+        <span>
+          Title
+        </span>
+      </div>
+      <div
+        className="rce-mbox-reply"
+      >
+        <div
+          className="rce-mbox-reply-left"
+        >
+          <div
+            className="rce-mbox-reply-owner"
+          >
+            Reply Title
+          </div>
+          <div
+            className="rce-mbox-reply-message"
+          >
+            Reply Text
+          </div>
+        </div>
+      </div>
+      <div
+        className="rce-mbox-text"
+      >
+        Text
+      </div>
+      <div
+        className="rce-mbox-time non-copiable"
+        data-text="15 years ago"
+      >
+        <span
+          className="rce-mbox-status"
+        >
+          <svg
+            color="#4FC3F7"
+            fill="currentColor"
+            height="1em"
+            stroke="currentColor"
+            strokeWidth="0"
+            style={
+              Object {
+                "color": "#4FC3F7",
+              }
+            }
+            viewBox="0 0 512 512"
+            width="1em"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M387.581 139.712L356.755 109 216.913 248.319l30.831 30.719 139.837-139.326zM481.172 109L247.744 340.469l-91.39-91.051-30.827 30.715L247.744 403 512 139.712 481.172 109zM0 280.133L123.321 403l30.829-30.713L31.934 249.418 0 280.133z"
+            />
+          </svg>
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+`;

@@ -3,7 +3,6 @@ import React, { useEffect, useRef } from 'react';
 import { IoMdDoneAll as IoDoneAll } from 'react-icons/io';
 import { MdAccessTime as MdIosTime, MdCheck, MdMessage } from 'react-icons/md';
 import { RiChatForwardLine as ForwardIcon } from 'react-icons/ri';
-import { format } from 'timeago.js';
 import { Avatar, AvatarProps } from '../Avatar/Avatar';
 import { FileMessage, FileMessageProps } from '../FileMessage/FileMessage';
 import {
@@ -21,6 +20,7 @@ import {
   SystemMessageProps,
 } from '../SystemMessage/SystemMessage';
 import './MessageBox.css';
+import { getDateString } from '../utils';
 
 export type MessageStatus = 'waiting' | 'sent' | 'received' | 'read';
 export type MessageType =
@@ -39,8 +39,7 @@ export type MessageBoxProps = {
   text?: string;
   title?: string;
   titleColor?: string;
-  date?: Date;
-  dateString?: string;
+  date: Date | undefined;
   onClick?: React.EventHandler<React.SyntheticEvent<HTMLDivElement>>;
   onTitleClick?: React.EventHandler<React.SyntheticEvent<HTMLDivElement>>;
   onForwardClick?: React.EventHandler<React.SyntheticEvent<HTMLDivElement>>;
@@ -52,7 +51,6 @@ export type MessageBoxProps = {
   forwarded?: boolean;
   replyButton?: boolean;
   status?: MessageStatus;
-  notch?: boolean;
   letterItem?: AvatarProps['letterItem'];
   /** message box avatar url */
   avatar?: AvatarProps['src'];
@@ -73,19 +71,18 @@ export type MessageBoxProps = {
 export const MessageBox: React.FC<MessageBoxProps> = props => {
   const messageRef = useRef<HTMLDivElement>(null);
   const {
+    id,
     focus,
-    type,
+    type = 'text',
     position = 'left',
     status,
     text = '',
     title,
     avatar,
-    date = new Date(),
-    dateString,
+    date,
     titleColor,
     renderAddCmp,
     className,
-    notch,
     forwarded,
     copiableDate,
     reply,
@@ -108,6 +105,7 @@ export const MessageBox: React.FC<MessageBoxProps> = props => {
       });
       onMessageFocused?.(props);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [focus, messageRef]);
 
   const positionCls = classNames('rce-mbox', {
@@ -116,16 +114,15 @@ export const MessageBox: React.FC<MessageBoxProps> = props => {
   const thatAbsoluteTime =
     type !== 'text' && type !== 'file' && !(type === 'location' && text);
 
-  const dateText =
-    date &&
-    (date instanceof Date || !isNaN(date)) &&
-    (dateString || format(date));
+  const dateText = getDateString(date);
 
   return (
     <div
       ref={messageRef}
       className={classNames('rce-container-mbox', className)}
       onClick={onClick}
+      key={id}
+      data-id={id}
     >
       {renderAddCmp instanceof Function && renderAddCmp()}
       {type === 'system' ? (
@@ -135,7 +132,6 @@ export const MessageBox: React.FC<MessageBoxProps> = props => {
           className={classNames(
             positionCls,
             { 'rce-mbox--clear-padding': thatAbsoluteTime },
-            { 'rce-mbox--clear-notch': !notch },
             { 'message-focus': focus },
           )}
         >
@@ -177,7 +173,7 @@ export const MessageBox: React.FC<MessageBoxProps> = props => {
               </div>
             )}
 
-            {(title || avatar) && (
+            {(title || avatar || letterItem) && (
               <div
                 style={titleColor ? { color: titleColor } : undefined}
                 onClick={onTitleClick}
@@ -185,7 +181,7 @@ export const MessageBox: React.FC<MessageBoxProps> = props => {
                   'rce-mbox-title--clear': type === 'text',
                 })}
               >
-                {avatar && <Avatar letterItem={letterItem} src={avatar} />}
+                <Avatar type="circle" letterItem={letterItem} src={avatar} />
                 {title && <span>{title}</span>}
               </div>
             )}
@@ -306,51 +302,8 @@ export const MessageBox: React.FC<MessageBoxProps> = props => {
               )}
             </div>
           </div>
-
-          {notch &&
-            (position === 'right' ? (
-              <svg
-                className={classNames('rce-mbox-right-notch', {
-                  'message-focus': focus,
-                })}
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 20 20"
-              >
-                <path d="M0 0v20L20 0" />
-              </svg>
-            ) : (
-              <div>
-                <svg
-                  className={classNames('rce-mbox-left-notch', {
-                    'message-focus': focus,
-                  })}
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 20 20"
-                >
-                  <defs>
-                    <filter id="filter1" x="0" y="0">
-                      <feOffset
-                        result="offOut"
-                        in="SourceAlpha"
-                        dx="-2"
-                        dy="-5"
-                      />
-                      <feGaussianBlur
-                        result="blurOut"
-                        in="offOut"
-                        stdDeviation="3"
-                      />
-                      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
-                    </filter>
-                  </defs>
-                  <path d="M20 0v20L0 0" filter="url(#filter1)" />
-                </svg>
-              </div>
-            ))}
         </div>
       )}
     </div>
   );
 };
-
-export default MessageBox;

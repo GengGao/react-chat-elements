@@ -24,5 +24,3 @@ export const SideBar: React.FC<SideBarProps> = ({
     <div className="rce-sbar-item">{bottom}</div>
   </div>
 );
-
-export default SideBar;

@@ -20,6 +20,7 @@ export type ChatListProps = {
     event: React.SyntheticEvent<HTMLImageElement>,
   ) => void;
   lazyLoadingImage?: string;
+  activeChatId?: string | null;
 };
 
 export const ChatList: React.FC<ChatListProps> = ({
@@ -27,6 +28,7 @@ export const ChatList: React.FC<ChatListProps> = ({
   className,
   dataSource,
   lazyLoadingImage,
+  activeChatId,
   onClick,
   onContextMenu,
   onAvatarError,
@@ -35,6 +37,7 @@ export const ChatList: React.FC<ChatListProps> = ({
     {dataSource.map((item, i) => (
       <ChatItem
         key={i}
+        isActive={item.id === activeChatId}
         lazyLoadingImage={lazyLoadingImage}
         {...item}
         onAvatarError={e => onAvatarError?.(item, i, e)}
@@ -44,5 +47,3 @@ export const ChatList: React.FC<ChatListProps> = ({
     ))}
   </div>
 );
-
-export default ChatList;

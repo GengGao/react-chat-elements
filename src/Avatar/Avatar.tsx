@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames';
 import './Avatar.css';
 
@@ -31,7 +31,7 @@ export type AvatarProps = {
   sideElement?: React.ReactNode;
 };
 
-export class Avatar extends React.Component<AvatarProps> {
+export class Avatar extends Component<AvatarProps> {
   _isMounted = false;
   loading = false;
 
@@ -62,13 +62,13 @@ export class Avatar extends React.Component<AvatarProps> {
   };
 
   stringToColor = (str: string) => {
-    var hash = 0;
+    let hash = 0;
     for (let i = 0; i < str.length; i++) {
       hash = str.charCodeAt(i) + ((hash << 5) - hash);
     }
     let color = '#';
     for (let i = 0; i < 3; i++) {
-      var value = (hash >> (i * 8)) & 0xff;
+      let value = (hash >> (i * 8)) & 0xff;
       value = (value % 150) + 50;
       color += ('00' + value.toString(16)).substr(-2);
     }
@@ -88,11 +88,11 @@ export class Avatar extends React.Component<AvatarProps> {
     let src = propSrc;
     let isLazyImage = false;
 
-    if (!propSrc) {
+    if (!propSrc && !letterItem) {
       return null;
     }
 
-    if (lazyLoadingImage) {
+    if (lazyLoadingImage && propSrc) {
       isLazyImage = true;
 
       if (!this.isLoaded(propSrc)) {
@@ -134,5 +134,3 @@ export class Avatar extends React.Component<AvatarProps> {
     );
   }
 }
-
-export default Avatar;

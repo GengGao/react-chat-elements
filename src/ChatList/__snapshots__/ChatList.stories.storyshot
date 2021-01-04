@@ -1,0 +1,118 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots ChatList Default 1`] = `
+<div
+  className="rce-container-clist"
+>
+  <div
+    className="rce-container-citem"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    <div
+      className="rce-citem rce-citem-active"
+    >
+      <div
+        className="rce-citem-avatar"
+      >
+        <div
+          className="rce-avatar-container circle large"
+        >
+          <img
+            className="rce-avatar"
+            onError={[Function]}
+            src="https://picsum.photos/200"
+          />
+        </div>
+      </div>
+      <div
+        className="rce-citem-body"
+      >
+        <div
+          className="rce-citem-body--top"
+        >
+          <div
+            className="rce-citem-body--top-title"
+          >
+            User 1
+          </div>
+          <div
+            className="rce-citem-body--top-time"
+          >
+            15 years ago
+          </div>
+        </div>
+        <div
+          className="rce-citem-body--bottom"
+        >
+          <div
+            className="rce-citem-body--bottom-title"
+          >
+            Sub
+          </div>
+          <div
+            className="rce-citem-body--bottom-status"
+          >
+            <span>
+              1
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className="rce-container-citem"
+    onClick={[Function]}
+    onContextMenu={[Function]}
+  >
+    <div
+      className="rce-citem"
+    >
+      <div
+        className="rce-citem-avatar"
+      >
+        <div
+          className="rce-avatar-container circle large"
+        >
+          <img
+            className="rce-avatar"
+            onError={[Function]}
+            src="https://picsum.photos/201"
+          />
+        </div>
+      </div>
+      <div
+        className="rce-citem-body"
+      >
+        <div
+          className="rce-citem-body--top"
+        >
+          <div
+            className="rce-citem-body--top-title"
+          >
+            User 2
+          </div>
+          <div
+            className="rce-citem-body--top-time"
+          >
+            15 years ago
+          </div>
+        </div>
+        <div
+          className="rce-citem-body--bottom"
+        >
+          <div
+            className="rce-citem-body--bottom-title"
+          >
+            Sub
+          </div>
+          <div
+            className="rce-citem-body--bottom-status"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

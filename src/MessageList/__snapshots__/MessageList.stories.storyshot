@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Storyshots MessageList Default 1`] = `
+<div
+  className="rce-container-mlist"
+>
+  <div
+    className="rce-mlist"
+    onScroll={[Function]}
+  >
+    <div
+      className="rce-container-mbox"
+      onClick={[Function]}
+    >
+      <div
+        className="rce-mbox"
+      >
+        <div
+          className="rce-mbox-body"
+          onContextMenu={[Function]}
+        >
+          <div
+            className="rce-mbox-title rce-mbox-title--clear"
+            onClick={[Function]}
+          >
+            <span>
+              Title 1
+            </span>
+          </div>
+          <div
+            className="rce-mbox-text"
+          >
+            Text 1
+          </div>
+          <div
+            className="rce-mbox-time non-copiable"
+            data-text="15 years ago"
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      className="rce-container-mbox"
+      onClick={[Function]}
+    >
+      <div
+        className="rce-mbox rce-mbox-right"
+      >
+        <div
+          className="rce-mbox-body"
+          onContextMenu={[Function]}
+        >
+          <div
+            className="rce-mbox-title rce-mbox-title--clear"
+            onClick={[Function]}
+          >
+            <span>
+              Title 2
+            </span>
+          </div>
+          <div
+            className="rce-mbox-text"
+          >
+            Text 2
+          </div>
+          <div
+            className="rce-mbox-time non-copiable"
+            data-text="15 years ago"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
